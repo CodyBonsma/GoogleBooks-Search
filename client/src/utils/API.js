@@ -6,5 +6,9 @@ export default {
     findBook: function(book) {
         return axios.get(GoogleSearchAPI + book);
     },
-    
+    saveBook: function(book) {
+        return axios.post("api/books", book);
+        console.log("SAVE", book)
+    },
+
 }

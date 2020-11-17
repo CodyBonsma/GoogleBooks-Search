@@ -17,6 +17,7 @@ const BookSchema = new Schema({
   },
   image: {
     type: String,
+    required: false,
     data: Buffer,
   },
   link: {

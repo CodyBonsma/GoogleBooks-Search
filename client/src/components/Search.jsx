@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import API from "../utils/API";
 
 const Search = () => {
   const [book, setBook] = useState([]);
+//   const textInput = useRef(null);
 
   useEffect(() => {
     API.findBook("Jung")
@@ -26,11 +27,17 @@ const handleChange = (e) => {
     });
 }
 
+const saveBook = (e) => {
+    // textInput.current.focus();
+    console.log(e);
+    console.log("Clicked to save book");
+}
+
   return (
     <div className="container fluid">
       <div className="row">
         <div className="col">
-          <h2>This will be the search page</h2>
+          <h2>TSearch for books</h2>
           <div className="search-bar row">
             <div className="col-sm-3" />
             <div className="col-sm-6 search-div">
@@ -38,12 +45,13 @@ const handleChange = (e) => {
                 type="text"
                 className="form-control input-search"
                 onChange={(e) => handleChange(e.target.value)}
-                placeholder="Search for employee"
+                placeholder="Search for book or author"
                 aria-describedby="inputGroup-sizing-default"
               />
             </div>
             <div className="col-sm-3" />
           </div>
+          <hr/>
           <table className="table table-dark">
             <thead>
               <tr>
@@ -51,7 +59,6 @@ const handleChange = (e) => {
                 <th scope="col">Title</th>
                 <th scope="col">Author</th>
                 <th scope="col">Link</th>
-                {/* <th scope="col">Age</th> */}
               </tr>
             </thead>
             <tbody>
@@ -64,7 +71,7 @@ const handleChange = (e) => {
                     <td key={book.volumeInfo.id}>{book.volumeInfo.title}</td>
                     <td>{book.volumeInfo.authors}</td>
                     <td>
-                      <a href="">link</a>
+                      <button onClick={(e) => saveBook(e.target.value)}>Save</button>
                     </td>
                   </tr>
                 );

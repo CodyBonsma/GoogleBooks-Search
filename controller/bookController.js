@@ -19,8 +19,10 @@ router.get("/api/books", (req, res) => {
 });
 
 router.post("/api/books", (req, res) => {
-  console.log(req.body);
-  db.Book.create({})
+  console.log("SAVE THIS BOOK", req.body);
+  db.Book.create({
+
+  })
     .then((newBook) => {
       console.log(newBook);
     })
